@@ -10,7 +10,7 @@
 /* Fondo oscuro con gradiente */
 body {
   background: linear-gradient(to bottom, #292929, #bdc3c7); /* gradiente de oscuro a gris */
-  color: #ecf0f1; /* texto claro */
+  color: #a7a7a7; /* texto claro */
   font-family: 'Lato', sans-serif; /* Usamos Lato para el cuerpo */
   margin: 0;
   padding: 0;
