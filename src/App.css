@@ -1,190 +1,243 @@
-@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
-
-@font-face {
-  font-family: 'Fount';
-  src: url('./Assets/fonts/BlackFlag.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+/* App.css - Versión Cyberpunk Mejorada */
+:root {
+  --neon-blue: #00f3ff;
+  --neon-pink: #ff00ff;
+  --neon-orange: #ff5500;
+  --dark-bg: #0f0f0f;
+  --darker-bg: #080808;
 }
 
-/* Fondo oscuro con gradiente */
 body {
-  background: linear-gradient(to bottom, #292929, #bdc3c7); /* gradiente de oscuro a gris */
-  color: #a7a7a7; /* texto claro */
-  font-family: 'Lato', sans-serif; /* Usamos Lato para el cuerpo */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  background: var(--dark-bg);
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
 }
 
-/* Cabecera con franja negra */
-.header {
-  background-color: #4e4e4e; /* Franja negra */
-  color: #fff; /* Texto blanco en la cabecera */
-  padding: 20px;
-  text-align: center;
-  position: relative;
-  margin-bottom: 30px; /* Espacio debajo de la cabecera */
-  border-radius: 20px; /* Esquinas redondeadas */
-  font-family: 'Creepster', cursive; /* Usamos la fuente gótica */
+/* Efecto glitch */
+.glitch-effect {
+  animation: glitch 1s linear infinite;
 }
 
-/* Imagen de perfil dentro de la cabecera */
-.perfil-image {
-  width: 100px;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+@keyframes glitch {
+  0% { filter: hue-rotate(0deg); }
+  20% { filter: hue-rotate(90deg); }
+  40% { filter: hue-rotate(180deg); }
+  60% { filter: hue-rotate(270deg); }
+  80% { filter: hue-rotate(360deg); }
+  100% { filter: hue-rotate(0deg); }
 }
 
-/* Título en la cabecera */
-.header h1 {
-  font-family: 'Poppins', sans-serif; /* Usamos Poppins para los títulos */
-  font-size: 3rem;
-  margin-top: 20px; /* Ajustamos el espacio entre la imagen y el título */
-  font-family: 'Creepster', cursive; /* Usamos la fuente gótica */
-}
-
-/* Contenedor principal */
-.container {
+.cyberpunk-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  text-align: center; /* Centra los elementos */
+  padding: 2rem;
 }
 
-/* Botones con íconos de redes sociales */
-/* Estilo flotante para los íconos de redes sociales */
-.social-links {
-  position: fixed; /* Fijamos la posición */
-  bottom: 20px; /* Lo ubicamos a 20px desde la parte inferior */
-  left: 20px; /* Lo ubicamos a 20px desde la parte izquierda */
-  display: flex;
-  flex-direction: column; /* Colocamos los íconos en una columna */
-  gap: 15px; /* Espacio entre los íconos */
-  z-index: 1000; /* Aseguramos que esté por encima de otros elementos */
-}
-
-/* Estilo de los íconos */
-.social-links a {
-  font-size: 30px; /* Tamaño de los íconos */
-  color: #fff;
-  display: flex;
-  align-items: center;
-  position: relative;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-/* Efecto hover para los íconos flotantes */
-.social-links a:hover {
-  color: #ffcc00; /* Cambio de color */
-  transform: scale(1.1); /* Efecto de crecimiento */
-}
-
-/* Contenedor del ícono y el texto del tooltip */
-.social-links a .tooltip-container {
-  display: flex;
-  align-items: center;
+/* Header estilo Cyberpunk */
+.cyber-header {
+  text-align: center;
+  margin-bottom: 3rem;
   position: relative;
 }
 
-/* Estilo del tooltip (el nombre de la plataforma) */
-.social-links a .tooltip-container .tooltip {
-  content: attr(data-platform);
+.glitch-wrapper {
+  position: relative;
+}
+
+.glitch {
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.glitch::before, .glitch::after {
+  content: attr(data-text);
   position: absolute;
-  bottom: 1%;
-  left: 250%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 14px;
-  white-space: nowrap;
-  display: none; /* Ocultamos el tooltip por defecto */
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 999;
-  transform: translateX(-50%) translateX(-20px); /* Inicia desplazado a la izquierda */
-}
-
-/* Mostrar el tooltip cuando el usuario pase el cursor */
-.social-links a:hover .tooltip-container .tooltip {
-  display: block; /* Mostramos el tooltip */
-  opacity: 1; /* Hacemos el tooltip completamente visible */
-  transform: translateX(-50%) translateX(0); /* Mueve el texto de izquierda a derecha */
-}
-
-
-
-/* Estilo de los álbumes */
-.album-section, .social-links {
-  margin: 20px 0;
-}
-
-/* Imágenes de los álbumes */
-.albums {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-/* Cada tarjeta de álbum */
-.album-card {
-  cursor: pointer;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  width: 280px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.album-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-
-/* Reproductor de SoundCloud */
-.soundcloud-player iframe {
-  border: none;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00ff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 #00f3ff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+.subtitle {
+  color: var(--neon-orange);
+  font-size: 1.2rem;
+  letter-spacing: 5px;
+  margin-top: -1rem;
+}
+
+/* Grid de álbumes */
+.albums-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.album-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  aspect-ratio: 1;
+  border: 2px solid transparent;
+}
+
+.album-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(30%);
+  transition: filter 0.3s ease;
+}
+
+.album-card:hover video {
+  filter: grayscale(0%) brightness(1.2);
+}
+
+.album-card.active {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px var(--accent-color);
+}
+
+.album-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  padding: 1rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.album-card:hover .album-overlay {
+  opacity: 1;
+}
+
+.album-overlay span {
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px black;
+}
+
+/* Reproductor */
+.player-section {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.neon-text {
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px var(--neon-blue);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.neon-text span {
+  color: var(--neon-orange);
+  text-shadow: 0 0 10px var(--neon-orange);
+}
+
+.player-container {
+  background: rgba(0,0,0,0.5);
+  padding: 2rem;
+  border-radius: 8px;
   max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+.player-container iframe {
+  width: 100%;
   height: 166px;
 }
 
-/* MEDIA QUERY PARA MÓVILES */
-@media screen and (max-width: 768px) {
-  .perfil-image {
-    width: 50px;
-    top: 10px;
-    left: 10px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .social-links ul {
-    flex-direction: column; /* Colocamos los botones de redes sociales en una columna en dispositivos móviles */
-    gap: 10px;
-  }
-
-  .album-card {
-    width: 90%; /* Adaptamos el tamaño de las tarjetas de los álbumes en móvil */
-  }
+/* Plataformas */
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
 
-/* MEDIA QUERY PARA TABLETS */
-@media screen and (max-width: 1024px) {
-  .perfil-image {
-    width: 60px;
+.platform-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: white;
+}
+
+.platform-card i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.platform-card span {
+  font-size: 1.2rem;
+}
+
+.platform-card:hover {
+  transform: translateY(-5px);
+}
+
+.spotify {
+  background: rgba(29, 185, 84, 0.1);
+  border: 1px solid #1db954;
+}
+
+.youtube {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid #ff0000;
+}
+
+.soundcloud {
+  background: rgba(255, 85, 0, 0.1);
+  border: 1px solid #ff5500;
+}
+
+.bandcamp {
+  background: rgba(0, 149, 152, 0.1);
+  border: 1px solid #009598;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .glitch {
+    font-size: 2.5rem;
+  }
+  
+  .albums-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .platforms-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
