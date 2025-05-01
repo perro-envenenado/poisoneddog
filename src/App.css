@@ -14,6 +14,86 @@ body {
   overflow-x: hidden;
 }
 
+/* Animación de carga cyberpunk */
+/* REEMPLAZA TU ANIMACIÓN SCANLINE POR ESTA VERSIÓN MEJORADA */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+body::after {  /* Cambié ::before por ::after para mejor compatibilidad */
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;  /* Grosor de la línea más visible */
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--neon-blue) 50%,
+    transparent
+  );
+  animation: scanline 4s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 10px var(--neon-blue);  /* Efecto neón */
+  opacity: 0.7;  /* Más visible */
+}
+
+/* EFECTO EXTRA: Líneas estáticas de por medio */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 3px,
+    rgba(0, 243, 255, 0.05) 3px,
+    rgba(0, 243, 255, 0.05) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Efecto "interferencia" aleatoria */
+@keyframes noise {
+  0% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0); }
+  0% { opacity: 1; }
+  5% { opacity: 0.8; }
+  10% { opacity: 1; }
+  15% { opacity: 0.3; }
+  20% { opacity: 1; }
+}
+
+
+
+body {
+  animation: noise 1.5s infinite;
+  overflow-x: hidden;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+  body::after {
+    height: 3px; /* Más gruesa en móviles */
+    animation-duration: 3s; /* Más lento */
+  }
+}
+
 /* Efecto glitch */
 .glitch-effect {
   animation: glitch 1s linear infinite;
@@ -239,5 +319,128 @@ body {
   
   .platforms-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Contador Minimalista */
+.minimal-counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 1rem auto;
+  justify-content: center;
+}
+
+.cyber-eye {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  color: var(--neon-blue);
+  font-size: 1.2rem;
+}
+
+.pupil {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--neon-pink);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s infinite alternate;
+}
+/* Estilos del contador cyberpunk */
+.cyber-visits-container {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+  padding: 1rem 2rem;
+  margin: 2rem auto;
+  max-width: 300px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-visits-container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    transparent 45%,
+    var(--neon-blue) 50%,
+    transparent 55%
+  );
+  animation: scan 4s linear infinite;
+  opacity: 0.3;
+}
+
+.cyber-visits-glitch {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  color: var(--neon-blue);
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px var(--neon-blue);
+  position: relative;
+  letter-spacing: 2px;
+}
+
+.cyber-visits-glitch::before,
+.cyber-visits-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cyber-visits-glitch::before {
+  color: var(--neon-pink);
+  z-index: -1;
+  animation: glitch-effect 3s infinite;
+}
+
+.cyber-visits-glitch::after {
+  color: var(--neon-orange);
+  z-index: -2;
+  animation: glitch-effect 2s reverse infinite;
+}
+
+.cyber-visits-sub {
+  font-size: 0.8rem;
+  color: var(--neon-orange);
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+}
+
+@keyframes scan {
+  0% { transform: rotate(45deg) translateY(-50%); }
+  100% { transform: rotate(45deg) translateY(50%); }
+}
+
+@keyframes glitch-effect {
+  0% { transform: translate(0); opacity: 0.7; }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(-3px, -3px); }
+  60% { transform: translate(3px, 3px); }
+  80% { transform: translate(3px, -3px); }
+  100% { transform: translate(0); opacity: 0.9; }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .cyber-visits-container {
+    max-width: 90%;
+    padding: 0.8rem;
+  }
+  
+  .cyber-visits-glitch {
+    font-size: 1.2rem;
   }
 }
