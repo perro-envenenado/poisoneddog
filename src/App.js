@@ -16,6 +16,13 @@ const albums = [
     color: "#00f3ff"
   },
   {
+    title: "Cat eyes",
+    video: require('./Assets/Video/cat.mp4'),
+    playerEmbed: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/poisoned-dog/cat-eyes&color=%23ff5500",
+    color: "#00f3ff"
+  }
+  ,
+  {
     title: "Anxiety",
     video: require('./Assets/Video/4nxi3ty.mp4'),
     playerEmbed: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/poisoned-dog/anxiety-1&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
