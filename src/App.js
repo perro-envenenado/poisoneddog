@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import imgPerfil from './Assets/Image/Perfil.png';
 
+
 const albums = [
   {
     title: "Free sex",
-    video: require('./Assets/Video/4nxi3ty.mp4'),
+    video: require('./Assets/Video/sex free.mp4'),
     playerEmbed: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/poisoned-dog/sex-free-9&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
     color: "#ff5500"
   },
@@ -15,13 +16,6 @@ const albums = [
     playerEmbed: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/poisoned-dog/cat-eyes&color=%23ff5500",
     color: "#00f3ff"
   },
-  {
-    title: "Cat eyes",
-    video: require('./Assets/Video/cat.mp4'),
-    playerEmbed: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/poisoned-dog/cat-eyes&color=%23ff5500",
-    color: "#00f3ff"
-  }
-  ,
   {
     title: "Anxiety",
     video: require('./Assets/Video/4nxi3ty.mp4'),
